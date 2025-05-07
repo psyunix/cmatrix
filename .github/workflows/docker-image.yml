@@ -3,7 +3,7 @@
 # The Dockerfile is assumed to be in the root of the repository.
 # The workflow triggers on pushes to the main branch.
 # Make sure to set up your Docker Hub credentials in the GitHub repository secrets:
-# DOCKER_USERNAME and DOCKER_PASSWORD
+# DOCKER_USERNAME and DOCKER_PASSWORD for authentication are stored in GitHub secrets.
 # You can also customize the Docker image name and tag as needed.
 
 # Dockerfile
