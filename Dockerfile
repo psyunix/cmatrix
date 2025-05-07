@@ -1,4 +1,4 @@
-# Build container image
+# Build container image - test github actions
 FROM alpine AS cmatrixbuilder
 
 WORKDIR /cmatrix
