@@ -30,4 +30,4 @@ ENTRYPOINT [ "./cmatrix" ]
 
 # Set the default command to run cmatrix
 
-CMD ["b"]
+CMD ["sh"]
