@@ -36,5 +36,6 @@ jobs:
         with:
           context: .
           push: true
+          platforms: linux/amd64,linux/arm64
           tags: psyunix/vm:cmatrix
           run: docker build . --file Dockerfile --tag cmatrix:$(date +%s)
