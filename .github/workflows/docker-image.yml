@@ -1,18 +1,40 @@
-name: Docker Image CI
+# This GitHub Actions workflow builds and pushes a Docker image to Docker Hub.
+# It uses the latest Alpine image as the base image and installs cmatrix.
+# The Dockerfile is assumed to be in the root of the repository.
+# The workflow triggers on pushes to the main branch.
+# Make sure to set up your Docker Hub credentials in the GitHub repository secrets:
+# DOCKER_USERNAME and DOCKER_PASSWORD.
+# You can also customize the Docker image name and tag as needed.
+
+# Dockerfile
+name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main  # or your deployment branch
 
 jobs:
-
-  build:
-
+  build-and-push:
     runs-on: alpine-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: psyunix/vm:cmatrix
+          run: docker build . --file Dockerfile --tag cmatrix:$(date +%s)
