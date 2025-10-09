@@ -28,6 +28,6 @@ COPY --from=cmatrixbuilder /cmatrix/cmatrix /cmatrix
 
 ENTRYPOINT [ "./cmatrix" ]
 
-# Set the default command to run cmatrix
+# Set the default command to run cmatrix - test
 
 CMD ["sh"]
