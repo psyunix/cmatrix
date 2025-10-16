@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2025-10-12T09:12:15Z"
+  labels:
+    kubernetes.io/metadata.name: defaultbe-docker-desktop
+  name: kube-docker-desktop
+  resourceVersion: "67"
+  uid: 29251579-3e01-4881-a8a7-354d161becb7
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active
